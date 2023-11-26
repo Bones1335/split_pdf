@@ -9,7 +9,7 @@ def split(reader):
         writer = PdfWriter()
         new_file_name = str(page + 1) + '.pdf'
         for i in range(start,end):
-            if i == len(reader.pages) or i > len(reader.pages):
+            if i >= len(reader.pages):
                 break
             writer.add_page(reader.pages[i])          
             with open (new_file_name, 'wb') as out:
