@@ -8,9 +8,10 @@ def main():
     reader = PdfReader(input('PDF file name to split: '))
     
     start = 0
-    end = 4
+    nth_page = int(input('Split every how many pages: '))
+    end = nth_page
 
-    for page in range(int(len(reader.pages) / 2)):
+    for page in range(len(reader.pages)):
         writer = PdfWriter()
         new_file_name = str(page + 1) + '.pdf'
         for i in range(start,end):
@@ -21,7 +22,7 @@ def main():
                 writer.write(out)
 
         start = end
-        end = start + 4
+        end = start + nth_page
             
 
 if __name__ == '__main__':
