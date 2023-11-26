@@ -1,11 +1,15 @@
 import csv
+import os
 
-def rename():
-    file = 'names.csv'
+def rename(filenames):
     
-    with open(file, encoding='utf-8') as csvfile:
+    with open('names.csv', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
+        i = 0
         for row in reader:
-            print(row['NOM'] + '_' + row['Prénom'])
-
-rename()
+            name = row['NOM'] + '_' + row['Prénom']
+            file = filenames[i]
+            if file.endswith('.pdf'):    
+                filenames[i] = os.rename(filenames[i], name + '.pdf')
+            i += 1
+              
