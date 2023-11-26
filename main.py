@@ -1,10 +1,14 @@
+import os
 from pypdf import PdfReader, PdfWriter
 
 def main():
-    reader = PdfReader(input('Input file path to desired pdf to split: '))
+    working_directory = input('Input directory path to desired pdf to split: ')
+    os.chdir(working_directory)
+
+    reader = PdfReader(input('PDF file name to split: '))
     writer = PdfWriter()
     writer.add_page(reader.pages[2])
-    with open(input('File name: '), 'wb') as output_stream:
+    with open(input('New file name: '), 'wb') as output_stream:
         writer.write(output_stream)
 
     # print(page.extract_text())
