@@ -7,7 +7,12 @@ def split(reader):
 
     for page in range(len(reader.pages)):
         writer = PdfWriter()
-        new_file_name = str(page + 1) + '.pdf'
+        if page < 9:
+            new_file_name = '00' + str(page + 1) + '.pdf'
+        elif page >= 9 and page < 99:
+            new_file_name = '0' + str(page + 1) +'.pdf'
+        elif page >= 99:
+            new_file_name = str(page + 1) +'.pdf'
         for i in range(start,end):
             if i >= len(reader.pages):
                 break

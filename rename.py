@@ -5,7 +5,7 @@ def rename(filenames):
     file = 'names.csv'
     if file in filenames:
         with open(file, encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
+            reader = csv.DictReader(csvfile, fieldnames=['NOM', 'Prénom'])
             i = 0
             for row in reader:
                 name = row['NOM'] + '_' + row['Prénom']

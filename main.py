@@ -13,6 +13,7 @@ def main():
     split.split(reader)
     send2trash(original_file)
     filenames = os.listdir(working_directory)
+    print(filenames)
     rename.rename(filenames)
 
 
